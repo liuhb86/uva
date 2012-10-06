@@ -1,0 +1,10 @@
+8
+C:I am not human.
+C:It is night.
+C:A is human.
+A: B is not evil.
+B: D is human.
+D: I am divine.
+E: D is not lying.
+C: E is divine.
+0

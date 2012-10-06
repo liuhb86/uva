@@ -1,0 +1,34 @@
+PROBLEM=297
+uva: $(PROBLEM).cpp
+	g++ -o uva -Wall $(PROBLEM).cpp 
+
+.PHONY: run
+run: uva $(PROBLEM).txt
+	@echo running
+	./uva <$(PROBLEM).txt
+.PHONY: runi
+runi: uva 
+	@echo running
+	./uva
+.PHONY: check
+check: uva $(PROBLEM).txt $(PROBLEM).ans
+	@echo checking-run
+	./uva < $(PROBLEM).txt >$(PROBLEM).out
+	@echo checking-diff
+	colordiff $(PROBLEM).out $(PROBLEM).ans
+.PHONY: checkns
+checkns: uva $(PROBLEM).txt $(PROBLEM).ans
+	@echo checking-run
+	./uva < $(PROBLEM).txt >$(PROBLEM).out
+	@echo checking-diff
+	colordiff -b $(PROBLEM).out $(PROBLEM).ans
+.PHONY:clean
+clean: 
+	rm uva *.o
+.PHONY:echo
+echo: 
+	@echo $(PROBLEM)
+.PHONY: test
+test:
+	echo $(a)
+	

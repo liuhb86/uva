@@ -1,0 +1,6 @@
+10061	defactoring, find prime, length of n!, trailing zero of n!
+350     length of loop in randomization
+10106   high precision adding, multiplying
+748	fix-point high precision adding ,multiplying, exponentiation
+10054, 10596, 10305 euler path, euler cycle
+10305  topological sort

@@ -1,0 +1,38 @@
+#PROBLEM=$(shell cat problem)
+PROBLEM=test
+uva: $(PROBLEM).cpp
+	@echo building
+	g++ $(PROBLEM).cpp -o uva
+problem: uva.dev
+	@grep FileName.*cpp uva.dev | sed 's/FileName=\(.*\)\.cpp/\1/g' >problem
+	@echo -n New Problem is: ; cat problem
+.PHONY: run
+run: uva problem $(PROBLEM).txt
+	@echo running
+	cat $(PROBLEM).txt|dos2unix -U|./uva
+.PHONY: runi
+runi: uva 
+	@echo running
+	./uva
+.PHONY: check
+check: problem uva $(PROBLEM).txt $(PROBLEM).ans
+	@echo checking-run
+	./uva < $(PROBLEM).txt >$(PROBLEM).out
+	@echo checking-diff
+	colordiff $(PROBLEM).out $(PROBLEM).ans
+.PHONY: checkns
+checkns: problem uva $(PROBLEM).txt $(PROBLEM).ans
+	@echo checking-run
+	./uva < $(PROBLEM).txt >$(PROBLEM).out
+	@echo checking-diff
+	colordiff -b $(PROBLEM).out $(PROBLEM).ans
+.PHONY:clean
+clean: 
+	rm *.o
+.PHONY:echo
+echo: 
+	@echo $(PROBLEM)
+.PHONY: test
+test:
+	echo $(a)
+	

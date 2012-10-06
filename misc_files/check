@@ -1,0 +1,10 @@
+#! /bin/bash
+echo build...
+g++ $1.cpp
+if [ $? -ne 0 ] ; then exit; fi
+echo run...
+./a < $1.txt > $1.out
+if [ $? -ne 0 ] ; then echo not return 0; exit; fi
+echo diff..
+diff -y $1.out $1.ans | less
+
